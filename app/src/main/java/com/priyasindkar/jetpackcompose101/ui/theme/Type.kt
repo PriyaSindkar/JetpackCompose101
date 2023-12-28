@@ -1,4 +1,4 @@
-package com.novumlogic.jetpackcompose101.ui.theme
+package com.priyasindkar.jetpackcompose101.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

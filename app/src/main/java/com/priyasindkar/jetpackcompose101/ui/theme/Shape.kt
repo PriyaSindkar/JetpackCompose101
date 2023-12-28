@@ -1,4 +1,4 @@
-package com.novumlogic.jetpackcompose101.ui.theme
+package com.priyasindkar.jetpackcompose101.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

@@ -1,6 +1,8 @@
-package com.novumlogic.jetpackcompose101
+package com.priyasindkar.jetpackcompose101
 
+import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -12,6 +14,7 @@ import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -21,7 +24,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.novumlogic.jetpackcompose101.ui.theme.JetpackCompose101Theme
+import com.priyasindkar.jetpackcompose101.ui.theme.JetpackCompose101Theme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +36,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+
 //                    ColumnExample("Android")
 //                    TextExample("Android")
                     ButtonExample()
@@ -82,19 +86,22 @@ fun BoxExample() {
     }
 }
 
+lateinit var message: String
+
 @Composable
-fun ButtonExample(/*context: Context*/) {
+fun ButtonExample() {
+    val context = LocalContext.current
     Box {
         Button(
             onClick = {
-//            Toast.makeText(context, "Button clicked", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Button clicked: ${message.replace("-", "")}", Toast.LENGTH_LONG).show()
             },
             modifier = Modifier
-//            .size(40.dp, 30.dp)
-                .fillMaxSize()
+                .size(120.dp, 60.dp)
+//                .fillMaxSize()
                 .padding(8.dp)
         ) {
-            Text(text = "Click Me! Click Me! Click Me!Click Me!Click Me!")
+            Text(text = "Click Me!")
         }
 
     }
@@ -107,7 +114,9 @@ fun TextFieldExample() {
         value = text,
         onValueChange = { newText ->
             text = newText
-        }
+        },
+        label = { Text(text = "Enter any text") },
+        placeholder = { Text(text = "Hint text") },
     )
 }
 
@@ -115,6 +124,6 @@ fun TextFieldExample() {
 @Composable
 fun DefaultPreview() {
     JetpackCompose101Theme {
-        ButtonExample()
+        BoxExample()
     }
 }
